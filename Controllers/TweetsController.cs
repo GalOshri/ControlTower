@@ -11,11 +11,24 @@ namespace ControlTower.Controllers
     [Route("api/[controller]")]
     public class TweetsController : Controller
     {
-        // GET: api/tweets
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET api/tweets/{tweet}
+        [HttpGet("{tweet}")]
+        public string Get(string tweet)
         {
-            return new string[] { "value1", "value2" };
+            // In v1.1, all API calls require authentication
+            var service = new TwitterService("nCcoV35oxto4mCFPJPhHEzrTN", "5a52hIXJNxq7TCV8BaRHV08M4DK0YzvWyU9ZqlS2Rt1IGa4iV2");
+            service.AuthenticateWith("3255256524-KYoXclTaiOOIhTcqEnliNoSyW6b8sAyaR9qSCD7", "nDKoIEbeec59cqbojVXPURfyTiSoT8LDOJxa4QFldsRq3");
+            
+            /* 
+            var tweets = service.ListTweetsOnHomeTimeline(new ListTweetsOnHomeTimelineOptions());
+            foreach (var tweet in tweets) 
+            {
+                if (tweet.Text != null)
+                    gal = tweet.Text;
+            }
+            */
+            service.SendTweet(new SendTweetOptions { Status = tweet });
+            return service.Response.Error.Message;
         }
 	}
 }
