@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
-
-using TweetSharp;
+using ControlTower.BusinessLogic;
 
 namespace ControlTower.Controllers
 {
@@ -25,6 +24,21 @@ namespace ControlTower.Controllers
             return service.Response.Error.Message;
             */
             return tweet + tweet;
+        }
+        
+        // GET api/tweets/{client}/{tweet}
+        [HttpGet("{client}/{tweet}")]
+        public string Get(string client, string tweet)
+        {
+            if (client == "weather")
+            {
+                return Weather.GetWeather(tweet);
+            }
+            else {
+                Console.WriteLine(client);
+                Console.WriteLine(tweet);
+                return tweet + tweet;
+            }
         }
 	}
 }
