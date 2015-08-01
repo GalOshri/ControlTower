@@ -28,25 +28,7 @@ namespace ControlTower.BusinessLogic
 			public string scope { get; set; }
 	    }
 		
-		private static Dictionary<string, string> languageDictionary = new Dictionary<string, string>()
-		{
-		    {"arabic", "ar"},
-			{"chinese", "zh-CHS"},
-			{"english", "en"},
-			{"french", "fr"},
-			{"german", "de"},
-			{"greek", "el"},
-			{"hebrew", "he"},
-			{"hindi", "hi"},
-			{"italian", "it"},
-			{"japanese", "ja"},
-			{"klingon", "tlh"},
-			{"korean", "ko"},
-			{"polish", "pl"},
-			{"romanian", "ro"},
-			{"russian", "ru"},
-			{"spanish", "es"}
-		};
+		
 		
 		public static string Translate(string text)
 		{
@@ -58,6 +40,26 @@ namespace ControlTower.BusinessLogic
 			{
 				return "Make sure the command is split by ':' from the text to translate";
 			}
+			
+			Dictionary<string, string> languageDictionary = new Dictionary<string, string>()
+			{
+			    {"arabic", "ar"},
+				{"chinese", "zh-CHS"},
+				{"english", "en"},
+				{"french", "fr"},
+				{"german", "de"},
+				{"greek", "el"},
+				{"hebrew", "he"},
+				{"hindi", "hi"},
+				{"italian", "it"},
+				{"japanese", "ja"},
+				{"klingon", "tlh"},
+				{"korean", "ko"},
+				{"polish", "pl"},
+				{"romanian", "ro"},
+				{"russian", "ru"},
+				{"spanish", "es"}
+			};
 			
 			string fromLanguage = null;
 			string toLanguage = null;
