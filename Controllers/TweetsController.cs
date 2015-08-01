@@ -11,10 +11,11 @@ namespace ControlTower.Controllers
     [Route("api/[controller]")]
     public class TweetsController : Controller
     {
-        // GET api/tweets/{tweet}
-        [HttpGet("{tweet}")]
-        public string Get(string tweet)
+        // GET api/tweets?tweet=text
+        [HttpGet()]
+        public string Get()
         {
+            string tweet = Request.Query["tweet"];
             tweet = WebUtility.UrlDecode(tweet);
             if (tweet.Contains("weather") || tweet.Contains("Weather"))
             {
