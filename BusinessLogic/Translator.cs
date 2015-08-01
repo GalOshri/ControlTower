@@ -34,11 +34,11 @@ namespace ControlTower.BusinessLogic
 		{
 			AdmAccessToken token = GetAccessToken();
 			
-			string[] textSplit = text.Split(':');
+			string[] textSplit = text.Split('-');
 			
 			if (textSplit.Length < 2)
 			{
-				return "Make sure the command is split by ':' from the text to translate";
+				return "Make sure the command is split by '-' from the text to translate";
 			}
 			
 			Dictionary<string, string> languageDictionary = new Dictionary<string, string>()
