@@ -20,6 +20,10 @@ namespace ControlTower.Controllers
             {
                 return Weather.GetWeatherFromTweet(tweet);
             }
+            else if (tweet.Contains("translate") || tweet.Contains("Translate"))
+            {
+                return Translator.Translate(tweet);
+            }
             else 
             {
                 Console.WriteLine(tweet);
